@@ -4,28 +4,79 @@ function M.hello_world()
   print("Hello world plugin")
 end
 
-function launch()
-    local handle = vim.loop.spawn("./prufus", { args = { nil }, stdio = { nil, nil, nill } }, function(code)
-    if code == 0 then
-      print("Executed successfully")
-    else
-      print("Error")
+local function create_terminal()
+
+    local launch_buffer = vim.api.nvim_create_buf(false, true)
+    --local chan = vim.api.nvim_open_term(launch_buffer, {})
+    vim.api.nvim_buf_set_option(launch_buffer, "bufhidden", "wipe")
+    vim.api.nvim_buf_set_option(launch_buffer, 'buflisted', false)
+    vim.api.nvim_buf_set_option(launch_buffer, 'swapfile', false)
+    vim.api.nvim_buf_set_option(launch_buffer, 'modifiable', false)
+    vim.api.nvim_buf_set_option(launch_buffer,"number",false)
+    --vim.api.nvim_chan_send(chan,result.stdout)
+
+    local win = vim.api.nvim_open_win(launch_buffer, true, {
+        relative = "editor",
+        width = 80,
+        height = 15,
+        row = vim.api.nvim_get_option("lines") - 10,
+        col = 5,
+        border = "single",
+    })
+    
+  vim.api.nvim_win_set_option(win, "winblend", 0)
+
+  return launch_buffer
+
+
+end
+
+local function launch()
+
+  local launch_buffer = create_terminal()
+
+  local program_out = vim.loop.new_pipe(false)
+
+
+  local lines = {}
+
+
+  local get_data = vim.schedule_wrap(function(error,data)
+    if data then
+      print("data") 
+      for _, line in ipairs(vim.split(data,'\n')) do
+        table.insert(lines,line)
+      end
     end
+
+      vim.api.nvim_buf_set_option(launch_buffer, 'modifiable', true)
+      vim.api.nvim_buf_set_lines(launch_buffer, 0 , -1, false, lines)
+      local last_line_number = vim.api.nvim_buf_line_count(launch_buffer)
+
+-- Remove the last line
+      vim.api.nvim_buf_set_lines(launch_buffer, 
+        last_line_number - 1, last_line_number, true, {})
+
+      vim.api.nvim_buf_set_option(launch_buffer, 'modifiable', false)
+
+
   end)
+
+    local handle = vim.loop.spawn("unbuffer", {
+      args = { "/root/prufus/prufus" },
+    stdio = { nil, program_out, nil } },
+    function(code)
+      if code == 0 then
+       print("Executed successfully")
+      else
+      print("Error")
+      end
+    end)
+
+    vim.loop.read_start(program_out,get_data)
+
 end
 
-local function handle_make_result(result)
-  if result.code == 0 then
-    print("Make command succeeded!")
-    launch()
-  else
-    print("Make command failed with exit code: " .. result.code)
-
-    --io.write(result.stdout .. "\n")
-    return
-    -- You can also access stdout/stderr from result.stdout and result.stderr
-  end
-end
 
 function M.build()
   print("building...") 

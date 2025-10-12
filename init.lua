@@ -24,3 +24,23 @@ prufus.create_command()
 
 vim.keymap.set('n', '<C-s>', ":w<CR>", {noremap = true, silent = true, desc = "Save file"})
 vim.keymap.set('n', '<M-e>', prufus.build)
+
+require('lspconfig').lua_ls.setup({
+  settings = {
+    Lua = {
+      workspace = {
+        checkThirdParty = false, -- Disable checking of third-party libraries for performance
+        library = {
+          vim.fn.expand("$VIMRUNTIME"), -- Add Neovim runtime files to the workspace
+          -- Add other paths to your Lua libraries or plugins here
+        },
+      },
+      telemetry = {
+        enable = false, -- Disable telemetry
+      },
+      diagnostics = {
+        globals = { 'vim' }, -- Prevent warnings for global 'vim' variable
+      },
+    },
+  },
+})
