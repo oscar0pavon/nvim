@@ -16,8 +16,8 @@ call plug#begin('~/.config/nvim/autoload/plugs')
   Plug 'itchyny/lightline.vim'
 
   " VS Code like intellisense and language-servers
-  "Plug 'neoclide/coc.nvim', {'for': ['c'],'branch': 'release'}
-  "Plug '/root/.config/nvim/cdev',{'for': ['c']}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug '/root/.config/nvim/cdev'
 
 
   " Auto pairs for (), [], "", '', {}
@@ -48,13 +48,15 @@ call plug#begin('~/.config/nvim/autoload/plugs')
 
   Plug 'xuhdev/vim-latex-live-preview'
 
-  Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'habamax/vim-godot'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'mfussenegger/nvim-dap'
-  Plug '/root/.config/nvim/gdev'
 
+  " Plug '/root/.config/nvim/gdev'
+
+  Plug '/root/.config/nvim/prufus'
   
 
 call plug#end()

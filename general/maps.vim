@@ -103,6 +103,7 @@ nnoremap mm gt
 
 nnoremap <silent>,1 :GFiles<CR>
 nnoremap <silent>,2 :Rg<CR>
+nnoremap <silent>,3 :Files<CR>
 nnoremap <silent>,, :tabnew<CR>
 map <C-A> :A<CR>
 

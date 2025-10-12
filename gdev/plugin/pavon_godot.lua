@@ -23,7 +23,11 @@ cmp.setup {
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+capabilities = vim.tbl_deep_extend('force',
+  capabilities, require('cmp_nvim_lsp').default_capabilities())
+capabilities = require('cmp_nvim_lsp').default_capabilities()
+--capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
+
 require('lspconfig').gdscript.setup(capabilities)
 
 -- require('nvim-treesitter.configs').setup {
@@ -53,4 +57,6 @@ local buffer_options = { noremap=true, silent=true, buffer=bufnr }
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, buffer_options)
 
 
-vim.keymap.set('n', '<F5>', dap.continue)
+vim.keymap.set('n', '<F1>', dap.continue)
+vim.keymap.set('n', '<F2>', dap.restart)
+vim.keymap.set('n', '<F3>', dap.terminate)
