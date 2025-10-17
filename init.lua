@@ -25,22 +25,41 @@ prufus.create_command()
 vim.keymap.set('n', '<C-s>', ":w<CR>", {noremap = true, silent = true, desc = "Save file"})
 vim.keymap.set('n', '<M-e>', prufus.build)
 
-require('lspconfig').lua_ls.setup({
-  settings = {
-    Lua = {
-      workspace = {
-        checkThirdParty = false, -- Disable checking of third-party libraries for performance
-        library = {
-          vim.fn.expand("$VIMRUNTIME"), -- Add Neovim runtime files to the workspace
-          -- Add other paths to your Lua libraries or plugins here
-        },
-      },
-      telemetry = {
-        enable = false, -- Disable telemetry
-      },
-      diagnostics = {
-        globals = { 'vim' }, -- Prevent warnings for global 'vim' variable
+
+
+require('nvim-treesitter.configs').setup {
+  -- ... other nvim-treesitter configurations ...
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false, -- Set to true to automatically update commentstring on filetype change
+  },
+  context = {
+    enable = true,
+    throttle = true, -- Throttle context updates for performance
+    max_lines = 0, -- 0 means unlimited lines of context
+    patterns = {
+      -- Customize patterns for C if needed, otherwise default patterns are used
+      -- For example, to show function definitions, loops, etc.
+      c = {
+        'function_definition',
+        'for_statement',
+        'while_statement',
+        'if_statement',
+        'struct_specifier',
+        'union_specifier',
+        'enum_specifier',
       },
     },
+    separator = "─", -- Character to use as a separator
+    zindex = 20, -- Z-index for the floating window
+    -- Options for highlighting
+    highlight = {
+      enable = true,
+      -- You can link TreesitterContext to a specific highlight group
+      -- For example, to link it to NormalFloat:
+      -- TreesitterContext = "NormalFloat",
+      -- TreesitterContextLineNumber = "LineNr",
+      -- TreesitterContextSeparator = "FloatBorder",
+    },
   },
-})
+}

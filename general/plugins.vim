@@ -8,9 +8,6 @@ call plug#begin('~/.config/nvim/autoload/plugs')
 
   " Themes
   Plug 'joshdick/onedark.vim'
-  "Plug 'morhetz/gruvbox'
-  "Plug 'lifepillar/vim-gruvbox8'
-  "Plug 'ayu-theme/ayu-vim'
 
   " statusline
   Plug 'itchyny/lightline.vim'
@@ -43,15 +40,19 @@ call plug#begin('~/.config/nvim/autoload/plugs')
 "  Plug 'Yggdroot/indentLine'
 
   Plug 'numToStr/Comment.nvim' 
+  
+  Plug 'nvim-treesitter/nvim-treesitter-context' 
 
-  "Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-  Plug 'xuhdev/vim-latex-live-preview'
+  
+  
+  "Plug 'xuhdev/vim-latex-live-preview'
 
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'habamax/vim-godot'
-  Plug 'L3MON4D3/LuaSnip'
+  "Plug 'hrsh7th/nvim-cmp'
+  "Plug 'hrsh7th/cmp-nvim-lsp'
+  "Plug 'habamax/vim-godot'
+  "Plug 'L3MON4D3/LuaSnip'
   Plug 'mfussenegger/nvim-dap'
 
   " Plug '/root/.config/nvim/gdev'
