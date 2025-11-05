@@ -29,6 +29,15 @@ vim.keymap.set('n', '<M-e>', prufus.build)
 
 require('nvim-treesitter.configs').setup {
   -- ... other nvim-treesitter configurations ...
+  ensure_installed = {"c", "lua"}, 
+  auto_install = true, 
+  highlight = {
+    enable = true,
+    additional_vim_regex_hightighting = false
+  },
+  playground = {
+    enable = true
+  }, 
   context_commentstring = {
     enable = true,
     enable_autocmd = false, -- Set to true to automatically update commentstring on filetype change
@@ -63,3 +72,30 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.mail = {
+      install_info = {
+          url = '/root/sources/tree-sitter-mail',
+          files = {"src/parser.c"},
+          generate_requieres_npm = false, 
+          requieres_generate_from_grammar = false,
+     }
+}
+
+
+vim.api.nvim_set_hl(0, '@type.builtin.c', { fg = '#ae865a' }) 
+
+-- -- Define a custom highlight group for additions (e.g., green foreground)
+vim.api.nvim_set_hl(0, 'MyDiffAdded', { fg = '#ffffff', bg = '#12261e' }) -- Use hex colors
+-- Link the Treesitter group to your custom group
+vim.cmd [[highlight link @diff.plus MyDiffAdded]]
+
+-- Define a custom highlight group for deletions (e.g., red foreground)
+vim.api.nvim_set_hl(0, 'MyDiffRemoved', { fg = '#ffffff', bg = '#25181c' })
+-- Link the Treesitter group to your custom group
+vim.cmd [[highlight link @diff.minus MyDiffRemoved]]
+
+
+vim.cmd [[highlight @diff.delta guifg=#FFFF00]]
+
+

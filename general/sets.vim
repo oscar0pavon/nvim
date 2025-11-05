@@ -9,8 +9,8 @@ set wrap
 
 " Indentation
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-set smarttab
-set autoindent
+"set smarttab
+"set autoindent
 set backspace=indent,eol,start
 
 " Make tilde of the end of buffer disappeared

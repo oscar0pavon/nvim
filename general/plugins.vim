@@ -23,7 +23,7 @@ call plug#begin('~/.config/nvim/autoload/plugs')
   " for better syntax highlighting
   
   
-  Plug 'sheerun/vim-polyglot'
+  "Plug 'sheerun/vim-polyglot'
   "Plug 'uiiaoo/java-syntax.vim' " for java
 
   " FUZZY FINDER file finder
@@ -42,6 +42,8 @@ call plug#begin('~/.config/nvim/autoload/plugs')
   Plug 'numToStr/Comment.nvim' 
   
   Plug 'nvim-treesitter/nvim-treesitter-context' 
+  
+  Plug 'nvim-treesitter/playground' 
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
