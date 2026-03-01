@@ -8,8 +8,8 @@ return {
       require("fzf-lua").setup({
         -- you can customize the window look here
 	defaults = {
-		file_icons = false,
-		git_icons = false,
+        file_icons = false,
+        git_icons = false,
 	},
         winopts = {
           height = 0.85,
