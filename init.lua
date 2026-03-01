@@ -11,7 +11,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
-require("keymaps")
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -23,3 +22,5 @@ require("lazy").setup({
   install = { colorscheme = { "habamax" } },
   checker = { enabled = true }, -- automatically check for plugin updates
 })
+
+require("keymaps")
