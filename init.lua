@@ -19,6 +19,7 @@ require("lazy").setup({
   spec = {
     -- This imports everything in the lua/plugins/ directory
     { import = "plugins" },
+    { "nvim-lua/plenary.nvim" }
   },
   -- Configure any other settings here
   install = { colorscheme = { "habamax" } },
