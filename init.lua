@@ -36,5 +36,11 @@ vim.lsp.config('clangd', {
   root_markers = { ".git", "compile_commands.json", "compile_flags.txt" },
 })
 
--- Start the server for the current buffer
-vim.lsp.enable('clangd')
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp", "objc", "objcpp" },
+  callback = function()
+    vim.lsp.enable("clangd")
+  end,
+})
+
