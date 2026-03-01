@@ -2,7 +2,7 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com"
+  local lazyrepo = "https://github.com/folke/lazy.nvim"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
 end
 
@@ -15,7 +15,7 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
     -- This imports everything in the lua/plugins/ directory
-    { import = "plugins" },
+    -- { import = "plugins" },
   },
   -- Configure any other settings here
   install = { colorscheme = { "habamax" } },
