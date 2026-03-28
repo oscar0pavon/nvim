@@ -58,3 +58,5 @@ end
  -- Map Ctrl+a to this function
 vim.keymap.set('n', '<C-a>', clangd_switch_source_header, { desc = 'Switch Source/Header' })
 
+vim.opt.clipboard = "unnamedplus"
+
