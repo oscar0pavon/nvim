@@ -42,6 +42,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "c", "cpp", "objc", "objcpp" },
   callback = function()
     vim.lsp.enable("clangd")
+    vim.treesitter.start()
   end,
 })
 
@@ -59,4 +60,7 @@ end
 vim.keymap.set('n', '<C-a>', clangd_switch_source_header, { desc = 'Switch Source/Header' })
 
 vim.opt.clipboard = "unnamedplus"
+
+
+
 
