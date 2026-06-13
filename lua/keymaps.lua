@@ -27,3 +27,23 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
   end,
 })
+
+
+vim.keymap.set('n', '<leader>f', function()
+    vim.lsp.buf.format({ async = true })
+end, { desc = "Format current buffer with LSP" })
+
+vim.keymap.set('v', '<leader>f', function()
+    -- Get the visual selection range boundaries
+    local start_line = vim.fn.line("v")
+    local end_line = vim.fn.line(".")
+    
+    -- Format only the lines within that specific range
+    vim.lsp.buf.format({
+        range = {
+            ["start"] = { start_line, 0 },
+            ["end"] = { end_line, 0 },
+        }
+    })
+end, { desc = "Format visual selection with LSP" })
+

@@ -38,12 +38,27 @@ vim.lsp.config('clangd', {
 })
 
 
+vim.filetype.add({
+  extension = {
+    h = 'c',
+  },
+})
+
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp", "objc", "objcpp" },
+  pattern = { "c", "h", "cpp", "objc", "objcpp" },
   callback = function()
     vim.lsp.enable("clangd")
     vim.treesitter.start()
   end,
+})
+
+vim.diagnostic.config({
+  virtual_text = {
+    spacing = 4,
+    source = "if_many", -- Shows 'clangd' only if multiple sources exist
+    prefix = '●',       -- Custom icon anchor for the hint
+  },
+  severity_sort = true, -- Always show errors before warnings
 })
 
 local function clangd_switch_source_header()
