@@ -47,3 +47,13 @@ vim.keymap.set('v', '<leader>f', function()
     })
 end, { desc = "Format visual selection with LSP" })
 
+-- Paste in Insert mode
+vim.keymap.set('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+
+vim.keymap.set('n', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+
+-- Paste in Command mode
+vim.keymap.set('c', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+
+vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, silent = true })
+

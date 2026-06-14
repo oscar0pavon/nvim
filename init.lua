@@ -71,11 +71,17 @@ if err then vim.notify("LSP Error: " .. tostring(err), vim.log.levels.ERROR) ret
     end)
 end
 
+
  -- Map Ctrl+a to this function
 vim.keymap.set('n', '<C-a>', clangd_switch_source_header, { desc = 'Switch Source/Header' })
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.filetype.add({
+  extension = {
+    s = "fasm", -- Replace "asm" with "nasm", "gas", "mips", etc. if needed
+  },
+})
 
 
 
