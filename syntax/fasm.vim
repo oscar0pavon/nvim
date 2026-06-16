@@ -77,7 +77,7 @@ syn keyword fasmInstr frstor frstpm fsave fscale fsetpm fsin fsincos fsqrt fst f
 syn keyword fasmInstr fsub fsubp fsubr fsubrp ftst fucom fucomi fucomip fucomp fucompp fwait fxam fxch
 syn keyword fasmInstr fxrstor fxsave fxtract fyl2x fyl2xp1 getsec haddpd haddps heap hlt hsubpd hsubps
 syn keyword fasmInstr idiv imul in inc ins insb insd insertps insertq insw int int1 int3 into invd invept
-syn keyword fasmInstr invlpg invpcid invvpid iret iretd iretw                                         
+syn keyword fasmInstr invlpg invpcid invvpid iret iretd iretw iretq                                         
 syn keyword fasmInstr lahf lar lddqu ldmxcsr lds lea leave les lfence lfs lgdt lgs lidt lldt
 syn keyword fasmInstr lmsw load loadall286 loadall386 lock lods lodsb lodsd lodsq lodsw loop loopd
 syn keyword fasmInstr loope looped loopew loopne loopned loopnz loopnzd loopnzw loopw loopz loopzd
