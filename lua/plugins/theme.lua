@@ -9,7 +9,13 @@ return {
         transparent = false, -- Set to true if you want a transparent background
         term_colors = true,
         ending_tildes = false, -- Show the ~ characters at the end of the buffer
+
+        highlights = {
+          ["@punctuation.bracket"] = { fmt = "bold" },
+          ["@delimiter"] = { fmt = "bold" },
+        }
       })
+
       require("onedark").load()
     end,
   },
