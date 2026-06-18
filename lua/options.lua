@@ -27,3 +27,7 @@ vim.opt.undofile = true      -- Save undo history to a file
 vim.opt.swapfile = false     -- Don't create annoying .swp files
 vim.opt.backup = false       -- Don't create backup files
 
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
+
+vim.opt.clipboard = "unnamedplus"
