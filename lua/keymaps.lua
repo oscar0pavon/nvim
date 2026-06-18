@@ -57,5 +57,10 @@ vim.keymap.set('c', '<C-v>', '<C-r>+', { noremap = true, silent = true })
 
 vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, silent = true })
 
+-- Press <leader>m to run 'make' in the background
+vim.keymap.set('n', '<leader>m', ':make<CR>', { desc = 'Run make' })
+
+-- Press <leader>r to run the compiled 'main' binary in a built-in terminal split
+vim.keymap.set('n', 'rr', ':split | terminal ./run<CR>i', { desc = 'Run C program' })
 
 
