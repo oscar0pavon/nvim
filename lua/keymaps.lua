@@ -64,3 +64,7 @@ vim.keymap.set('n', '<leader>m', ':make<CR>', { desc = 'Run make' })
 vim.keymap.set('n', 'rr', ':split | terminal ./run<CR>i', { desc = 'Run C program' })
 
 
+vim.keymap.set('n', '<C-s>', '<cmd>update<cr>', { desc = 'Save file' })
+vim.keymap.set('i', '<C-s>', '<cmd>update<cr><esc>', { desc = 'Save file and go to Normal mode' })
+vim.keymap.set('v', '<C-s>', '<cmd>update<cr>', { desc = 'Save file' })
+
